@@ -1,18 +1,17 @@
 class Solution {
-    public int totalFruit(int[] fruits) {
-        HashMap<Integer,Integer> hmm = new HashMap<>();
-        int l=0,r=0,max = 0;
-        while(r<fruits.length){
-            hmm.put(fruits[r],hmm.getOrDefault(fruits[r],0)+1);
-            if(hmm.size()>2){
-                hmm.put(fruits[l],hmm.get(fruits[l])-1);
-                if(hmm.get(fruits[l])<=0){
-                    hmm.remove(fruits[l]);
-                }
-                l++;
+    public int totalFruit(int[] a) {
+        HashSet<Integer> set=new HashSet<>();
+        int l=0,r=0,n=a.length,max=0;
+        while(r<n){
+            set.add(a[r]);
+            if(set.size()>2){
+                set.clear();
+                l=r-1;
+                while(a[l]==a[l-1]) l--;
+                set.add(a[l]);
+                set.add(a[r]);
             }
-            int len = r-l+1;
-            max = Math.max(max,len);
+            max=Math.max(max,r-l+1);
             r++;
         }
         return max;
