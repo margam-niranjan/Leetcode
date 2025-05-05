@@ -4,14 +4,12 @@ class Solution {
         int l=0,r=0,max = 0;
         while(r<fruits.length){
             hmm.put(fruits[r],hmm.getOrDefault(fruits[r],0)+1);
-            if(hmm.size()>2){
-                while(hmm.size()>2){
-                    hmm.put(fruits[l],hmm.get(fruits[l])-1);
-                    if(hmm.get(fruits[l])<=0){
-                        hmm.remove(fruits[l]);
-                    }
-                    l++;
+            while(hmm.size()>2){
+                hmm.put(fruits[l],hmm.get(fruits[l])-1);
+                if(hmm.get(fruits[l])<=0){
+                    hmm.remove(fruits[l]);
                 }
+                l++;
             }
             int len = r-l+1;
             max = Math.max(max,len);
