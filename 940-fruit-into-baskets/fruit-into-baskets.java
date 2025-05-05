@@ -11,9 +11,11 @@ class Solution {
                 }
                 l++;
             }
+            if(hmm.size()<=2){
             int len = r-l+1;
             max = Math.max(max,len);
             r++;
+            }
         }
         return max;
     }
