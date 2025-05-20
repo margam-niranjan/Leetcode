@@ -4,16 +4,16 @@ class Solution {
         findPermute(0,nums,res);
         return res;
     }
-    public void findPermute(int ind, int[] nums, List<List<Integer>> res){
+    public void findPermute(int ind, int[] nums,List<List<Integer>> res){
         if(ind == nums.length){
             List<Integer> temp = new ArrayList<>();
-            for(int num : nums){
-                temp.add(num);
+            for(int i : nums){
+                temp.add(i);
             }
-            res.add(new ArrayList<>(temp));
+            res.add(temp);
             return;
         }
-        for(int i = ind;i<nums.length;i++){
+        for(int i = ind ;i<nums.length;i++){
             swap(ind,i,nums);
             findPermute(ind+1,nums,res);
             swap(ind,i,nums);
