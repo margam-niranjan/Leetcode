@@ -10,7 +10,7 @@ class Solution {
             res.add(new ArrayList<>(can));
             return;
         }
-         if (ind >= nums.length || target < 0) {
+        if(ind>=nums.length || target < 0){
             return;
         }
         can.add(nums[ind]);
