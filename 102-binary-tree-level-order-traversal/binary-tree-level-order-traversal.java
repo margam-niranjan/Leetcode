@@ -19,16 +19,14 @@ class Solution {
         bfs(root,new ArrayList<>(), res);
         return res;
     }
-    public Queue<TreeNode> q = new LinkedList<>();
-    void bfs(TreeNode root, List<Integer> lst,List<List<Integer>> res){
-        if(root == null) {
-            return;
-        }
+    void bfs(TreeNode root, List<Integer> lst, List<List<Integer>> res){
+        if(root == null) return;
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         q.add(null);
         while(!q.isEmpty()){
             TreeNode top = q.poll();
-            if(top == null){
+            if(top==null){
                 res.add(lst);
                 lst = new ArrayList<>();
                 if(!q.isEmpty()){
@@ -39,9 +37,7 @@ class Solution {
                 lst.add(top.val);
                 if(top.left != null) q.add(top.left);
                 if(top.right != null) q.add(top.right);
-                
             }
-            
         }
     }
 }
