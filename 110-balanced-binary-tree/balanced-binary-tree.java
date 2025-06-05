@@ -27,10 +27,10 @@ class Solution {
         if(root == null)
             return true;
         
-        return 
+        return (
         Math.abs(height(root.left)-height(root.right)) < 2 &&
         isBalanced(root.left) &&
         isBalanced(root.right)
-        ;
+        );
     }
 }
