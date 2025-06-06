@@ -1,27 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
+
+    int result = 0;
+
     public int diameterOfBinaryTree(TreeNode root) {
-        return helper(root).diameter;
+        if (root == null) return 0;
+
+        helper(root);
+        return result;
     }
 
-    private TreeInfo helper(TreeNode root) {
-        if (root == null) return new TreeInfo(0, 0);
-
-        TreeInfo left = helper(root.left);
-        TreeInfo right = helper(root.right);
-
-        int height = Math.max(left.height, right.height) + 1;
-        int dia = Math.max(Math.max(left.diameter, right.diameter), left.height + right.height);
-
-        return new TreeInfo(height, dia);
-    }
-
-    static class TreeInfo {
-        int height;
-        int diameter;
-
-        TreeInfo(int height, int diameter) {
-            this.height = height;
-            this.diameter = diameter;
+    private int helper(TreeNode node) {
+        if (node.left == null && node.right == null) return 0;
+        if (node.left == null) {
+            int length = helper(node.right) + 1;
+            result = Math.max(result, length);
+            return length;
         }
+        if (node.right == null) {
+            int length = helper(node.left) + 1;
+            result = Math.max(result, length);
+            return length;
+        }
+
+        int left = helper(node.left);
+        int right = helper(node.right);
+        result = Math.max(result, left + right + 2);
+        return Math.max(left, right) + 1;
     }
 }
