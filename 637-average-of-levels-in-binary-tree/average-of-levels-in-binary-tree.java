@@ -21,11 +21,11 @@ class Solution {
         while(!q.isEmpty()){
             int size = q.size();
             double sum = 0;
-            for(int i = 0; i<size; i++){
+            for(int i = 0 ; i< size; i++){
                 TreeNode top = q.poll();
                 sum += top.val;
-                if (top.left != null) q.add(top.left);
-                if (top.right != null) q.add(top.right);
+                if(top.left != null) q.add(top.left);
+                if(top.right != null) q.add(top.right);
             }
             res.add(sum/size);
         }
