@@ -21,9 +21,9 @@ class Solution {
     }
     void helper(TreeNode root, int low, int high){
         if(root == null) return;
-        helper(root.left,low,high);
-        if(root.val <= high && root.val >= low) sum+= root.val;
-        helper(root.right,low,high);
+        if(root.val > low) helper(root.left,low,high);
+        if(root.val <= high && root.val >= low)sum+=root.val;
+        if(root.val < high) helper(root.right,low,high);
 
     }
 }
