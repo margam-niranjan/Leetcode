@@ -16,6 +16,7 @@
 class Solution {
     int res = 0;
     public int findTilt(TreeNode root) {
+        if(root == null) return 0;
         sum(root);
         return res;
     }
@@ -23,8 +24,8 @@ class Solution {
         if(root == null) return 0;
         int leftSum = sum(root.left);
         int rightSum = sum(root.right);
-        int abs = Math.abs(leftSum - rightSum);
-        res += abs;
+        int tilt = Math.abs(leftSum - rightSum);
+        res += tilt;
         return root.val + leftSum + rightSum;
     }
 }
