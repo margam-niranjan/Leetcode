@@ -4,10 +4,7 @@ class Solution {
         for(int i = 0 ; i<nums.length; i++){
             ArrayList<Integer> lst = new ArrayList<>();
             int val = nums[i];
-            if (val == 0) {
-                res.add(0);
-                continue;
-            }
+            
             while(val>0){
                 lst.add(val%10);
                 val/=10;
