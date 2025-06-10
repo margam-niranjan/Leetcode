@@ -14,24 +14,22 @@
  * }
  */
 class Solution {
+    TreeNode prev,next,first;
     public void recoverTree(TreeNode root) {
-        ArrayList<Integer> lst = new ArrayList<>();
-        helper1(root,lst);
-        Collections.sort(lst);
-        helper2(root,lst);
-    }
-    void helper1(TreeNode root, ArrayList<Integer> lst){
         if(root == null) return;
-        helper1(root.left,lst);
-        lst.add(root.val);
-        helper1(root.right,lst);        
+        inOrder(root);
+        int temp = first.val;
+        first.val = next.val;
+        next.val = temp;
     }
-    int i = 0;
-    void helper2(TreeNode root, ArrayList<Integer> lst){
+    void inOrder(TreeNode root){
         if(root == null) return;
-        helper2(root.left,lst);
-        root.val = lst.get(i++);
-        helper2(root.right,lst);        
+        inOrder(root.left);
+        if(prev != null && root.val < prev.val){
+            if(first == null) first = prev;
+            next = root;
+        }
+        prev = root;
+        inOrder(root.right);
     }
-
 }
