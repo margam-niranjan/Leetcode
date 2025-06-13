@@ -27,7 +27,7 @@ class Solution {
     public TreeNode sortedListToBST(ListNode head) {
         if(head == null) return null;
         if(head.next == null) return new TreeNode(head.val);
-        ListNode slow = head, slow_prev = null, fast = head;
+        ListNode fast = head, slow = head, slow_prev = null;
         while(fast != null && fast.next != null){
             slow_prev = slow;
             slow = slow.next;
