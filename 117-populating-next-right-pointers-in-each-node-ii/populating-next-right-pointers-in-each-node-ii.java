@@ -31,17 +31,12 @@ class Solution {
         while (!q.isEmpty()) {
             int size = q.size();
             Node prev = null;
-
-            for (int i = 0; i < size; i++) {
+            for(int i = 0 ; i<size; i++){
                 Node curr = q.poll();
-
-                if (prev != null) {
-                    prev.next = curr;
-                }
+                if(prev != null) prev.next = curr;
                 prev = curr;
-
-                if (curr.left != null) q.add(curr.left);
-                if (curr.right != null) q.add(curr.right);
+                if(curr.left != null) q.add(curr.left);
+                if(curr.right != null) q.add(curr.right);
             }
             prev.next = null;
         }
