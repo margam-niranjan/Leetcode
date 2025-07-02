@@ -27,8 +27,6 @@ class Solution {
 
         dp[0] = 1;
         Arrays.fill(prefixSum, 1);
-
-        // Har group process karo
         for (int i = 0; i < groupSizes.size(); ++i) {
             int groupSize = groupSizes.get(i);
             int[] newDp = new int[k];
