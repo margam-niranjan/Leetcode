@@ -5,6 +5,6 @@ class Solution {
             if(hs.contains(i)) return i;
             hs.add(i);
         }
-        return -1;
+        return -1;  
     }
 }
