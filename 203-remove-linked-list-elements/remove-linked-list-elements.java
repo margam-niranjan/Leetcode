@@ -16,8 +16,8 @@ class Solution {
         head.next = removeElements(head.next, val);
 
         if(head.val == val) 
-        return head.next;
+            return head.next;
         else
-        return head;
+            return head;
     }
 }
