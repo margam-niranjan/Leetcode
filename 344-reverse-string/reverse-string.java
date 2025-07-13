@@ -1,7 +1,6 @@
 class Solution {
     public void reverseString(char[] s) {
-        int i = 0, j = s.length -1;
-        swap(s,i,j);
+        swap(s,0,s.length - 1);
     }
     void swap(char[] s, int i , int j){
         while(i<j){
