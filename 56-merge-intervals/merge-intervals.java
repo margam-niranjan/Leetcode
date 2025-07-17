@@ -1,24 +1,20 @@
 class Solution {
-    public int[][] merge(int[][] nums) {
-        int i = 0;
-        Arrays.sort(nums, (a, b) -> Integer.compare(a[0], b[0]));
-        List<List<Integer>> lst = new ArrayList<>();
-        while(i<nums.length){
-            int start = nums[i][0];
-            int end = nums[i][1];
-            while( i < nums.length && nums[i][0]<=end){
-               end = Math.max(end, nums[i][1]);
-               i++;
+    public int[][] merge(int[][] intervals) {
+        List<int[]> res = new LinkedList<>();
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        int start = intervals[0][0];
+        int rightmostRightBound = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] > rightmostRightBound) {
+                res.add(new int[]{start, rightmostRightBound});
+                start = intervals[i][0];
+                rightmostRightBound = intervals[i][1];
+            } else {
+                rightmostRightBound = Math.max(rightmostRightBound, intervals[i][1]);
             }
-            List<Integer> temp = new ArrayList<>();
-            temp.add(start);
-            temp.add(end);
-            lst.add(temp);
         }
-        int[][] arr = lst.stream()
-            .map(innerList -> innerList.stream().mapToInt(Integer::intValue).toArray())
-            .toArray(int[][]::new);
-        return arr;
+        res.add(new int[]{start, rightmostRightBound});
+        return res.toArray(new int[res.size()][]);
 
     }
 }
