@@ -16,12 +16,12 @@ public class Solution {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
-                ListNode entry = head;
-                while (entry != slow) {
-                    entry = entry.next;
+                slow = head;
+                while (fast != slow) {
+                    fast = fast.next;
                     slow = slow.next;
                 }
-                return entry;
+                return fast;
             }
         }
         return null;
