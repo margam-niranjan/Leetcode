@@ -1,14 +1,36 @@
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int min = Integer.MAX_VALUE,max = Integer.MIN_VALUE;
-        for(int i = 0 ; i<nums.length; i++){
-            if(nums[i] == target){
-                min = Math.min(min,i);
-                max = Math.max(max,i);
+public int []searchRange(int[] nums,int target){
+    int [] ans={-1,-1};
+    int start=search(nums,target,true);
+    int end=search(nums,target,false);
+    ans[0]=start;
+    ans[1]=end;
+    return ans;
+}
+    int search(int[] nums, int target,boolean searchAgain) {
+        int ans=-1;
+        int start=0;
+        int end=nums.length-1;
+        while(start<=end){
+            
+            int mid=(start+end)/2;
+            if(target>nums[mid]){
+                start=mid+1;
+
+            }
+            else if(target<nums[mid]){
+                end=mid-1;
+            }
+            else{
+                ans=mid;
+            if(searchAgain){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
             }
         }
-        if(min == Integer.MAX_VALUE) min = -1;
-        if(max == Integer.MIN_VALUE) max = -1;
-        return new int[]{min,max};
+        return ans;
     }
 }
