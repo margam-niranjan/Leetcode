@@ -1,24 +1,20 @@
 class Solution {
     public int maximumUniqueSubarray(int[] nums) {
-        int n = nums.length;
+        int n = nums.length ;
         boolean[] seen = new boolean[10001];
         int left = 0;
-        int currentSum = 0;
-        int maxSum = 0;
-        
-        for (int right = 0; right < n; right++) {
-            while (seen[nums[right]]) {
-                currentSum -= nums[left];
+        int currSum = 0;
+        int max = 0;
+        for(int right = 0; right < nums.length ; right++){
+            while(seen[nums[right]]){
+                currSum -= nums[left];
                 seen[nums[left]] = false;
                 left++;
             }
-            currentSum += nums[right];
+            currSum += nums[right];
             seen[nums[right]] = true;
-            if (currentSum > maxSum) {
-                maxSum = currentSum;
-            }
+            max = Math.max(max, currSum);
         }
-        
-        return maxSum;
+        return max;
     }
 }
