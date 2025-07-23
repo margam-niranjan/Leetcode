@@ -16,10 +16,8 @@ class Solution {
         if (n > 2) isPrime[2] = true;
         for (int i = 3; i < n; i += 2) isPrime[i] = true;
         for (int i = 3; i * i < n; i += 2) {
-            if (isPrime[i]) {
-                for (int j = i * i; j < n; j += i * 2) {
-                    isPrime[j] = false;
-                }
+            for (int j = i * i; j < n; j += i * 2) {
+                isPrime[j] = false;
             }
         }
         isPrime[0] = false;
