@@ -21,7 +21,7 @@ class Solution {
             }
             else{
                 s.next = head;
-                s = s.next;
+                s = s.next;                
             }
             head = head.next;
         }
