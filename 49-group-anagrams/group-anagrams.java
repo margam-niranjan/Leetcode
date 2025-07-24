@@ -7,7 +7,7 @@ class Solution {
             String sorted = new String(ch);
             map.putIfAbsent(sorted,new ArrayList<>());
             map.get(sorted).add(str);
-       }
-       return new ArrayList(map.values());
+        } 
+        return new ArrayList<>(map.values());
     }
 }
