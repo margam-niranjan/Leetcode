@@ -1,12 +1,10 @@
 class Solution {
     public long maximumMedianSum(int[] nums) {
         Arrays.sort(nums);
-        int i =0 , j = nums.length -1;
+        int n =  nums.length;
         long sum = 0;
-        while(i<j){
-            sum += nums[j-1];
-            i++;
-            j-=2;
+        for(int i=n/3; i<n; i+=2){
+            sum+=(nums[i]*1L);
         }
         return sum;
 
