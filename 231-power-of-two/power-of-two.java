@@ -1,9 +1,8 @@
 class Solution {
     public boolean isPowerOfTwo(int n) {
-        double num = n;
-        while(num>=2){
-            num /= 2;
+         if (n <= 0) {
+            return false;
         }
-        return num == 1;
+        return (n & (n - 1)) == 0;
     }
 }
