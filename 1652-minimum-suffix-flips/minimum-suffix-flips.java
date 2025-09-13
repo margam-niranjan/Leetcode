@@ -1,22 +1,17 @@
 class Solution {
-    public int minFlips(String target) {
-        int n = target.length();
-        int i = 0;
+    public int minFlips(final String target) {
+        final char[] array = target.toCharArray();
+        
         int count = 0;
-        while(i<n){
-            while(i<n && target.charAt(i) == '0'){
-                i++;
-            }
-            int c = 0;
-            while(i<n && target.charAt(i) == '1'){
-                i++;
-                c++;
-            }
-            if(c>0){
-                count ++;
-            }
+        char prev = '0';
+
+        for(int i = 0; i < array.length; ++i) {
+            if(prev != array[i])
+                count++;
+
+            prev = array[i];
         }
-        if(target.charAt(n-1) == '1') return 2 * count - 1;
-        return 2 * count;
+
+        return count;
     }
 }
