@@ -5,21 +5,21 @@ class Solution {
         for(char ch : t.toCharArray()){
             arr[ch]++;
         }
-        while(right<s.length()){
-            if(arr[s.charAt(right)]>0)count++;
+        while(right < s.length()){
+            if(arr[s.charAt(right)] > 0 )count++;
             arr[s.charAt(right)]--;
             while(count == t.length()){
-                if(right - left + 1 < minLen){
+                if( (right - left + 1) < minLen){
                     minLen = right - left + 1;
                     startInd = left;
                 }
                 arr[s.charAt(left)]++;
-                if(arr[s.charAt(left)]>0)count--;
+                if(arr[s.charAt(left)]> 0) count--;
                 left++;
             }
-
             right++;
         }
-        return startInd==-1 ? "" : s.substring(startInd,startInd+minLen);
+        return startInd == -1 ? "" : s.substring(startInd, startInd + minLen);
+
     }
 }
