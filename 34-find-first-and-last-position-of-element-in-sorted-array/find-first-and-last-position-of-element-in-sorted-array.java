@@ -1,36 +1,32 @@
 class Solution {
-public int []searchRange(int[] nums,int target){
-    int [] ans={-1,-1};
-    int start=search(nums,target,true);
-    int end=search(nums,target,false);
-    ans[0]=start;
-    ans[1]=end;
-    return ans;
-}
-    int search(int[] nums, int target,boolean searchAgain) {
-        int ans=-1;
-        int start=0;
-        int end=nums.length-1;
-        while(start<=end){
-            
-            int mid=(start+end)/2;
-            if(target>nums[mid]){
-                start=mid+1;
-
-            }
-            else if(target<nums[mid]){
-                end=mid-1;
-            }
-            else{
-                ans=mid;
-            if(searchAgain){
-                end=mid-1;
-            }
-            else{
-                start=mid+1;
-            }
+    public int[] searchRange(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        int mid = 0;
+        boolean found = false;
+        while (l <= r) {
+            mid = l + (r - l) / 2;
+            if (nums[mid] == target) {
+                found = true;
+                break;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
             }
         }
-        return ans;
+
+        if (!found) {
+            return new int[]{-1, -1};
+        }
+
+        int left = mid, right = mid;
+        while (left - 1 >= 0 && nums[left - 1] == target) {
+            left--;
+        }
+        while (right + 1 < nums.length && nums[right + 1] == target) {
+            right++;
+        }
+
+        return new int[]{left, right};
     }
 }
